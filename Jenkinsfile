@@ -6,4 +6,11 @@ node{
         def mvnHome = tool name: 'maven', type: 'maven'
         sh "${mvnHome}/bin/mvn package"
     }
+    stage('artifactory'){
+        archiveArtifacts 'petclinic-pipeline/target/spring-petclinic-2.0.0.BUILD-SNAPSHOT.jar'
+    }
+    stage('Junit'){
+        junit 'petclinic-pipeline/target/surefire-reports/*.xml'
+
+    }
 }
