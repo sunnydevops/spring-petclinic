@@ -7,7 +7,7 @@ node{
         sh "${mvnHome}/bin/mvn package"
     }
     stage('artifactory'){
-        archiveArtifacts 'petclinic-pipeline/target/spring-petclinic-2.0.0.BUILD-SNAPSHOT.jar'
+        archiveArtifacts 'petclinic-pipeline/target/spring-petclinic-2.0.0.BUILD-SNAPSHOT.jar.original'
     }
     stage('Junit'){
         junit 'petclinic-pipeline/target/surefire-reports/*.xml'
